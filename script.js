@@ -1,43 +1,41 @@
-let darkMode = localStorage.getItem('darkMode')
+let darkMode = localStorage.getItem("darkMode");
 const toggleBtn = document.querySelector(".toggle-mode");
 const body = document.querySelector("body");
 
 const header = document.querySelector(".title");
-const phonetic = document.querySelector('.phonetic')
-const pos = document.querySelector('.pos')
-const def = document.querySelector('.definition')
-const example = document.querySelector('.example')
-const syns = document.querySelector('.syns')
-const source = document.querySelector('.source')
+const phonetic = document.querySelector(".phonetic");
+const pos = document.querySelector(".pos");
+const def = document.querySelector(".definition");
+const example = document.querySelector(".example");
+const synSection = document.querySelector(".synParent");
+const syns = document.querySelector(".syns");
+const source = document.querySelector(".source");
 const define = document.getElementById("define");
 
 const enableDarkMode = () => {
-  body.classList.add('dark-mode')
-  localStorage.setItem('darkMode', 'enabled')
+  body.classList.add("dark-mode");
+  localStorage.setItem("darkMode", "enabled");
   toggleBtn.innerHTML = "light";
-}
+};
 
 const disableDarkMode = () => {
-  body.classList.remove('dark-mode')
-  localStorage.setItem('darkMode', null)
+  body.classList.remove("dark-mode");
+  localStorage.setItem("darkMode", null);
   toggleBtn.innerHTML = "dark";
-}
+};
 
-if (darkMode === 'enabled') {
-  enableDarkMode()
+if (darkMode === "enabled") {
+  enableDarkMode();
 }
-
 
 toggleBtn.addEventListener("click", () => {
+  darkMode = localStorage.getItem("darkMode");
 
-  darkMode = localStorage.getItem('darkMode')
-
-  if (darkMode !== 'enabled') {
-    enableDarkMode()
+  if (darkMode !== "enabled") {
+    enableDarkMode();
   } else {
-    disableDarkMode()
+    disableDarkMode();
   }
-
 });
 
 async function getDefinition() {
@@ -53,27 +51,33 @@ async function getDefinition() {
     if (data[0]) {
       const title = data[0].word;
       const definition = data[0].meanings[0].definitions[0].definition;
-      const phone = data[0].phonetic
-      const partOfSpeech = data[0].meanings[0].partOfSpeech
+      const phone = data[0].phonetic;
+      const partOfSpeech = data[0].meanings[0].partOfSpeech;
       header.textContent = `${title}`;
-      phonetic.textContent = `${phone}`
-      pos.textContent = `${partOfSpeech}`
+      phonetic.textContent = `${phone}`;
+      pos.textContent = `${partOfSpeech}`;
       def.textContent = `${definition}`;
       if (data[0].meanings[0].definitions[0].example) {
-        const exam = data[0].meanings[0].definitions[0].example
-        example.textContent = `'${exam}'`
+        const exam = data[0].meanings[0].definitions[0].example;
+        example.textContent = `'${exam}'`;
       } else {
-        example.textContent = 'No examples available'
+        example.textContent = "No examples available";
       }
-      const synonyms = data[0].meanings[0].synonyms
+      const synonyms = data[0].meanings[0].synonyms;
+      if (synSection.innerHTML) {
+        synSection.innerHTML = "";
+      }
       for (let i = 0; i < synonyms.length; i++) {
-        syns.textContent += `${synonyms[i]}, \n`
+        const item = synonyms[i];
+        const newSyn = document.createElement("span");
+        newSyn.classList.add("syns");
+        newSyn.textContent = `${item}, `;
+        synSection.appendChild(newSyn);
       }
 
-      const src = data[0].sourceUrls[0]
-      source.href = `${src}`
-      source.textContent = `${src} `
-
+      const src = data[0].sourceUrls[0];
+      source.href = `${src}`;
+      source.textContent = `${src} `;
     } else {
       header.textContent = "No definition found";
     }
