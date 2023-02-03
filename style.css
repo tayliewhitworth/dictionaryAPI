@@ -1,0 +1,243 @@
+:root {
+  --dark-mode: hsl(0, 0%, 10%);
+  --light-mode: #fff;
+
+  --primary: rgb(157, 78, 221);
+  --light-primary: rgb(157 78 221 / 0.3);
+
+  --light-gray: hsl(0, 0%, 90%);
+  --medium-gray: hsl(0, 0%, 70%);
+}
+
+.dark-mode {
+  --dark-mode: #fff;
+  --light-mode: hsl(0, 0%, 10%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  color: var(--dark-mode);
+  background-color: var(--light-mode);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  justify-content: space-between;
+  /* background-color: var(--primary); */
+}
+
+.nav-left {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.toggle-mode {
+  border: none;
+  background-color: var(--light-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  color: var(--dark-mode);
+  cursor: pointer;
+}
+
+.input-section {
+  /* display: grid;
+    place-items: center; */
+  margin-top: 2rem;
+  padding-inline: 2rem;
+}
+
+input[type="text"] {
+  border: none;
+  background-color: hsl(0, 0%, 90%);
+  padding: 1rem 2.75rem;
+  border-radius: 8px;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+}
+
+.submit-btn {
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  /* position: absolute;
+    right: 350px; */
+  position: relative;
+  bottom: 55px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.definition-section {
+  padding: 2rem;
+}
+
+.header-section {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.phonetic {
+  color: var(--primary);
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.pos {
+  font-weight: bold;
+  font-style: italic;
+  position: relative;
+}
+
+.pos::after {
+  content: "";
+  min-width: 80%;
+  max-width: 100%;
+  height: 0.5px;
+  background-color: var(--light-gray);
+  position: absolute;
+  top: 12.5px;
+  right: 10px;
+}
+
+.meaning-section {
+  margin-top: 2rem;
+}
+
+.meaning-section > * {
+  padding-bottom: 2rem;
+}
+
+h2 {
+  color: var(--medium-gray);
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.meaning-section span {
+  font-style: italic;
+}
+
+.example {
+  color: var(--medium-gray);
+  display: inline-block;
+}
+
+.syn-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.syns {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.bottom-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--light-gray);
+  margin-block: 2rem;
+}
+
+.source-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.source-section p {
+  color: var(--medium-gray);
+}
+
+.source {
+  cursor: pointer;
+  color: inherit;
+}
+
+.source:hover {
+  color: var(--primary);
+}

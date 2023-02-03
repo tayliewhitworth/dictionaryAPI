@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dictionary</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <h1 class="nav-left">📖</h1>
+            <div class="nav-right">
+                <button class="toggle-mode">dark</button>
+            </div>
+        </nav>
+
+        <div class="input-section">
+            <form onsubmit='getDefinition(); return false;'>
+                <input type="text" id="word" name="word" placeholder="Search any word!">
+                <button class="submit-btn" type="submit">🔍</button>
+            </form>
+        </div>
+
+        <div class="definition-section" id="define">
+            <div class="header-section">
+                <h1 class="title">Word</h1>
+                <p class="phonetic">/w3:d/</p>
+            </div>
+            <div class="part1">
+                <div class="pos-flex">
+                    <p class="pos">noun</p>
+                </div>
+                <div class="meaning-section">
+                    <h2>Meaning</h2>
+                    <p class="definition">The smallest unit of language that has a particular meaning and can be expressed by itself.</p>
+                    <span>Example: </span><p class="example"> "This is a word"</p>
+                </div>
+                <div class="syn-section">
+                    <h2>Synonyms</h2>
+                    <p class="syns">vocable, promise</p>
+                </div>
+            </div>
+
+            <div class="bottom-line"></div>
+            <div class="source-section">
+                <p>Source</p><a class="source" target="_blank"></a>
+            </div>
+            <div id="define">
+                
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
